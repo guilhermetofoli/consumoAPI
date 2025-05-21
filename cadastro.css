@@ -61,7 +61,7 @@ nav {
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                 url('https://www.bmw.com.br/content/dam/bmw/marketBMWCOM/bmw_com/all-models/m-series/m3-sedan/2023/highlights/bmw-m3-cs-sp-desktop.jpg') no-repeat center center/cover;
-    height: 40vh;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
