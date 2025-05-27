@@ -120,7 +120,7 @@ nav {
 
 .form-row {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .form-row .form-group {
