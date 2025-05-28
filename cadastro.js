@@ -63,6 +63,10 @@ const pesquisarCep = async() => {
     }
 }
 
+preencherFormulario = (endereco) => {
+    
+}
+
 //Limpa Formulário
 limparFormulario = () => {
     document.getElementById('rua').value = '';
