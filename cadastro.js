@@ -40,3 +40,10 @@ function setupCadastroPage() {
 
 // No final do DOMContentLoaded existente, adicione:
 setupCadastroPage();
+
+'use strict'; //Modo Restrito
+//Verifica se o CEP é valido //
+const eNumero = (numero) => /^[0-9]+$/.test(numero);
+
+
+
