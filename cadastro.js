@@ -1,3 +1,20 @@
+// Máscara para o campo de CPF
+document.addEventListener("DOMContentLoaded", function () {
+    const cpfInput = document.getElementById("cpf");
+
+    cpfInput.addEventListener("input", function () {
+        let value = cpfInput.value.replace(/\D/g, ""); // Remove tudo que não é número
+
+        if (value.length > 11) value = value.slice(0, 11);
+
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+        cpfInput.value = value;
+    });
+});
+
 //Verifica se o CEP é valido //
 const eNumero = (numero) => /^[0-9]+$/.test(numero);
 const cepValido = (cep) => cep.length == 8 && eNumero(cep);
