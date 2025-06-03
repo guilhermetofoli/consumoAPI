@@ -1,47 +1,3 @@
-// Adicione ao seu home.js existente
-
-function setupCadastroPage() {
-    // Máscara para telefone
-    const telefone = document.getElementById('telefone');
-    if (telefone) {
-        telefone.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            value = value.substring(0, 11);
-            value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-            value = value.replace(/(\d)(\d{4})$/, '$1-$2');
-            e.target.value = value;
-        });
-    }
-
-    // Máscara para CPF
-    const cpf = document.getElementById('cpf');
-    if (cpf) {
-        cpf.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            value = value.substring(0, 11);
-            value = value.replace(/(\d{3})(\d)/, '$1.$2');
-            value = value.replace(/(\d{3})(\d)/, '$1.$2');
-            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-            e.target.value = value;
-        });
-    }
-
-    // Máscara para CEP
-    const cep = document.getElementById('cep');
-    if (cep) {
-        cep.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            value = value.substring(0, 8);
-            value = value.replace(/^(\d{5})(\d)/, '$1-$2');
-            e.target.value = value;
-        });
-    }
-}
-
-// No final do DOMContentLoaded existente, adicione:
-setupCadastroPage();
-
-'use strict'; //Modo Restrito
 //Verifica se o CEP é valido //
 const eNumero = (numero) => /^[0-9]+$/.test(numero);
 const cepValido = (cep) => cep.length == 8 && eNumero(cep);
@@ -60,21 +16,24 @@ const pesquisarCep = async() => {
         } else{
             preencherFormulario(addres);
         }
+    } else {
+        alert("CEP Incorreto, tente novamente.");
     }
 }
 
-preencherFormulario = (endereco) => {
+const preencherFormulario = (endereco) => {
     document.getElementById('rua').value = endereco.logradouro;
     document.getElementById('bairro').value = endereco.bairro;
     document.getElementById('cidade').value = endereco.localidade;
-    document.getElementById('estado').value = endereco.uf;
+    document.getElementById('estado').value = endereco.estado;
 }
 
 //Limpa Formulário
-limparFormulario = () => {
+const limparFormulario = () => {
     document.getElementById('rua').value = '';
     document.getElementById('bairro').value = '';
     document.getElementById('cidade').value = '';
     document.getElementById('estado').value = '';
 }
 
+document.getElementById('cep').addEventListener('focusout', pesquisarCep);
