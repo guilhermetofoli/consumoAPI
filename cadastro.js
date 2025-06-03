@@ -1,3 +1,26 @@
+//Máscara para o campo de Telefone
+document.addEventListener("DOMContentLoaded", function () {
+    const telefoneInput = document.getElementById("telefone");
+
+    telefoneInput.addEventListener("input", function () {
+        let value = telefoneInput.value.replace(/\D/g, "");
+
+        if (value.length > 11) value = value.slice(0, 11);
+
+        if (value.length <= 10) {
+            // Formato: (XX) XXXX-XXXX
+            value = value.replace(/(\d{2})(\d)/, "($1) $2");
+            value = value.replace(/(\d{4})(\d)/, "$1-$2");
+        } else {
+            // Formato: (XX) XXXXX-XXXX
+            value = value.replace(/(\d{2})(\d)/, "($1) $2");
+            value = value.replace(/(\d{5})(\d)/, "$1-$2");
+        }
+
+        telefoneInput.value = value;
+    });
+});
+
 // Máscara para o campo de CPF
 document.addEventListener("DOMContentLoaded", function () {
     const cpfInput = document.getElementById("cpf");
